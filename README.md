@@ -1,18 +1,24 @@
 # Built To Chill
 
-This repo currently contains the Cursor rules files I use to vibe code for SetDigger.com. These files are a work in progress, have not been optimized, and are pretty messy, but they've significantly improved outcomes for me and I hope they help you!
+This repo contains AI development rules and tools for both Cursor IDE and Claude Code. These files have significantly improved development outcomes and I hope they help you too!
 
-## How to use
+## Choose Your AI Development Tool
 
-Copy all files in the Cursor directory into your project, then run `node nextjs_index_generator.js` to build your codebase index files. Cursor should immediately start using the rules files to steer development.
+### For Claude Code Users
+From the ClaudeCode directory:
+1. Copy `CLAUDE.md` and `node code_index_generator.js` to your project root
+2. Run `node code_index_generator.js` to build a compact codebase index
+3. Reference the specialized guides as needed (`@create-prd.md`, `@generate-tasks.md`, etc.)
 
-## Rules Overview
+See `ClaudeCode/README.md` for detailed usage instructions and migration notes.
 
-- *general_rules.mdc* is always used by Cursor and provides the general ruleset to steer Cursor development.
+### For Cursor IDE Users
+From the Cursor directory:
+1. Copy all files in the Cursor directory into your project root
+2. Run `node nextjs_index_generator.js` to build your codebase index files
+3. Cursor should immediately start using the rules files to steer development
 
-- *codebase_awareness.mdc* is always used and makes Cursor aware of the codebase index.
-
-- *create-prd.mdc, generate-tasks.mdc, process-task-list.mdc* are all derived from Ryan Carson's [AI Dev Tasks](https://github.com/snarktank/ai-dev-tasks). Check that repo for more info, but these files are used to generate PRDs and task lists that contain enough context and structure to improve code generation, and to inform the agent how you would like it to proceed with implementing your task list.
+See `Cursor/README.md` for detailed usage instructions and migration notes.
 
 ## Suggested development workflow
 
