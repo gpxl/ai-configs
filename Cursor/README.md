@@ -1,6 +1,6 @@
 # Cursor IDE Rules and Index Generator
 
-This directory contains the original Cursor IDE rules files and tools for AI-assisted development. These rules provide comprehensive guidance for building Next.js applications with modern development practices.
+This directory contains Cursor IDE rules files and tools for AI-assisted development. These rules provide comprehensive guidance for building Next.js applications with modern development practices.
 
 ## Files Overview
 
@@ -14,7 +14,7 @@ This directory contains the original Cursor IDE rules files and tools for AI-ass
 > *create-prd.mdc, generate-tasks.mdc, process-task-list.mdc* are all derived from Ryan Carson's [AI Dev Tasks](https://github.com/snarktank/ai-dev-tasks).
 
 ### Tools
-- **`nextjs_index_generator.js`** - Comprehensive codebase index generator for Cursor IDE
+- **`nextjs_index_generator.js`** - Codebase index generator for Cursor IDE
 
 ## Quick Start
 
@@ -27,7 +27,7 @@ cp Cursor/.cursor/rules/*.mdc /path/to/your/project/.cursor/rules/
 ```
 
 ### 2. Generate Codebase Index
-Run the comprehensive index generator:
+Run the index generator:
 
 ```bash
 # Install dependencies first
