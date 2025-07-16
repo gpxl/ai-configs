@@ -1,0 +1,152 @@
+---
+alwaysApply: true
+description: "Hierarchical codebase-aware code generation rules"
+---
+
+# Codebase-Aware Code Generation Rules
+
+## Hierarchical Code Index Integration
+This project uses a hierarchical codebase index located at:
+- `codebase-index.json` (structured data)
+- `codebase-index-formatted.md` (human-readable)
+
+## Context Loading Protocol
+Before generating any code, follow this systematic approach:
+
+### Step 1: Query Hierarchical Index
+Load context from the comprehensive JSON index:
+```
+Full Index Data: @codebase-index.json
+Human-Readable Summary: @codebase-index-formatted.md
+
+Priority Loading:
+Level 1 - Project Structure: Use codebase-index.json.level1
+Level 2 - Module Summaries: Use codebase-index.json.level2 (filter relevant files)
+Level 3 - Function Signatures: Use codebase-index.json.level3 (semantically similar only)
+Level 4 - Implementation Details: Use codebase-index.json.level4 (direct reuse candidates)
+Architectural Patterns: Use codebase-index.json.architectural
+```
+
+### Step 2: Semantic Analysis Process
+1. Extract key concepts from user request (nouns, verbs, domain terms)
+2. Search codebase-index.json for matches using these strategies:
+   - **Level 2 Search**: Query `codebase-index.json.level2` object keys for file paths containing relevant terms
+   - **Level 3 Search**: Query `codebase-index.json.level3` for function/component names and signatures
+   - **Architectural Search**: Check `codebase-index.json.architectural.patterns` for relevant tech stack
+   - **Route Search**: Use `codebase-index.json.architectural.routes` for routing-related requests
+3. Calculate similarity scores:
+   - Exact name matches in level3 keys (highest priority)
+   - Functional similarity based on signatures and types
+   - Domain similarity based on file paths and purposes
+   - Pattern similarity based on architectural.patterns
+4. Request specific JSON sections only for >70% matches
+5. Document reasoning: "Found similar functionality in [JSON path] with [similarity]% match"
+
+### Step 3: Code Generation Priority Rules
+Follow this strict hierarchy:
+1. **REUSE**: Import and use existing functions (preferred)
+2. **EXTEND**: Build upon existing patterns 
+3. **CREATE**: Only when reuse/extension isn't viable
+
+Always explain your choice: "I'm [reusing/extending/creating] because [specific reason]"
+
+## Mandatory Pre-Generation Checks
+
+### Duplication Prevention
+- Search existing codebase for similar functionality before creating new code
+- If similarity >80%: "Identical functionality exists at [location]"  
+- If similarity 60-80%: "Similar functionality exists. Should I extend [location] or create new?"
+- If similarity 40-60%: "Related functionality at [location]. I'll reference its patterns"
+
+### Architectural Consistency  
+- Follow established patterns found in the index
+- Maintain consistent naming conventions
+- Respect folder structure and organization
+- Integrate with existing state management approach
+- Match error handling patterns
+
+### Integration Verification
+Before finalizing code:
+- Verify all imports can be resolved
+- Check function signatures match project patterns  
+- Ensure architectural layer compliance
+- Validate testing approach consistency
+
+## Response Format Requirements
+
+### Transparent Decision Making
+Always explain:
+- "I chose to extend [existing component] because [reason]"
+- "I created new utility because [reason]"  
+- "I placed this in [location] following your [pattern] convention"
+- "I imported [utility] instead of recreating this logic"
+
+### Quality Assurance
+Include in every response:
+1. One suggestion for improving code organization
+2. One opportunity for future code reuse  
+3. One potential architectural improvement
+4. Security and performance considerations
+5. Accessibility notes (for UI components)
+
+## File Structure Integration
+
+### Recommended Project Structure
+```
+your-nextjs-project/
+├── .cursor/
+│   └── rules/
+│       ├── codebase-awareness.mdc (this file)
+│       ├── typescript-rules.mdc
+│       └── nextjs-patterns.mdc
+├── codebase-index.json
+├── codebase-index-formatted.md  
+├── package.json
+└── src/
+```
+
+### Index Update Workflow
+- Regenerate index after significant codebase changes: `node nextjs_index_generator.js`
+- Primary reference: @codebase-index.json (comprehensive data)
+- Secondary reference: @codebase-index-formatted.md (quick overview)
+- Use "npm run update-index" script for automation
+
+## JSON Index Structure Reference
+The codebase-index.json contains:
+```json
+{
+  "metadata": { "projectPath": "...", "generatedAt": "...", "nextjsVersion": "..." },
+  "level1": { "folderName": { "purpose": "...", "fileCount": N, "type": "..." } },
+  "level2": { "relativePath": { "purpose": "...", "type": "...", "exports": [...], "imports": [...] } },
+  "level3": { "file:functionName": { "name": "...", "signature": "...", "type": "...", "exported": true } },
+  "level4": { /* Implementation details populated on demand */ },
+  "architectural": {
+    "dependencies": {},
+    "patterns": { "pages-router": true, "typescript": true, ... },
+    "routes": { "pages": [...], "app": [...] }
+  }
+}
+```
+
+Query this structure systematically rather than relying on the simplified markdown summary.
+
+## Context Window Management
+Efficiently manage context using hierarchical approach:
+1. Always include Level 1-2 overview (lightweight)
+2. Request Level 3 details for max 5 most relevant modules
+3. Request Level 4 implementation only for direct reuse candidates  
+4. Priority order when context limit reached:
+   - Current file's existing code
+   - Direct dependencies 
+   - Similar patterns in same directory
+   - Project-wide utilities
+   - External library usage patterns
+
+## Error Handling
+When insufficient context:
+1. Generate code with explicit assumptions stated
+2. Include TODO comments for project-specific details
+3. Provide multiple implementation options
+4. Ask specific questions to resolve ambiguities
+
+Never generate code silently without acknowledging missing context.

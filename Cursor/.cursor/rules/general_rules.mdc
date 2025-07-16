@@ -1,0 +1,177 @@
+---
+alwaysApply: false
+description: General Cursor Rules
+---
+
+- Always adhere to the rules listed in this document!
+
+# General Code Style & Formatting
+- Follow the Airbnb Style Guide for code formatting.
+- Use PascalCase for React component file names (e.g., UserCard.tsx, not user-card.tsx).
+- Prefer named exports for components.
+- Use functional and declarative programming patterns; avoid classes.
+- Prefer iteration and modularization over code duplication.
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
+- Use a test driven development approach.
+
+# Project Structure & Architecture
+- Follow Next.js patterns and use the App Router.
+- Correctly determine when to use server vs. client components in Next.js.
+
+# Styling & UI
+- Use Tailwind CSS for styling.
+- Use Shadcn UI for components.
+- Use Framer Motion for animations.
+
+# Data Fetching & Forms
+- Use TanStack Query (react-query) for frontend data fetching.
+- Use React Hook Form for form handling.
+- Use Zod for validation.
+
+# State Management & Logic
+- Use React Context for state management.
+
+# Backend & Database
+Use Supabase for database access.
+
+# Authentication
+Use Supabase magic link for authentication.
+
+# Package management
+- Always use pnpm for package management.
+
+# Naming Conventions
+- Use lowercase with dashes for directories (e.g., components/auth-wizard).
+- Favor named exports for components.
+
+# TypeScript Best Practices
+- Use TypeScript for all code.
+- Avoid any and enums; use explicit types and maps instead.
+- Use functional components with TypeScript interfaces.
+- Enable strict mode in TypeScript for better type safety.
+
+# Syntax & Formatting
+- Use the function keyword for pure functions.
+- Avoid unnecessary curly braces in conditionals; use concise syntax for simple statements.
+- Use declarative JSX.
+- Use Prettier for consistent code formatting.
+
+# Styling & UI
+- Implement responsive design with Flexbox and useWindowDimensions.
+- Ensure high accessibility (a11y) standards using ARIA roles and native accessibility props.
+- Use the motion npm package for performant animations and gestures.
+
+# Documentation
+- Always keep documentation up to date as decisions are made and tasks are completed.
+- When working with a task list, always check the task list for any remaining tasks and update the task list as needed.
+- Run nextjs_index_generator.js to update codebase_index files when a tasklist is complete.
+
+# Testing-First Development Workflow
+
+## Test-Driven Development (TDD)
+- ALWAYS create tests BEFORE implementing new features
+- Write failing tests first, then implement code to make them pass
+- For new components, create test files immediately after component scaffolding
+- Test files should be created alongside the component files they test
+- Do not modify or test (ShadCN) components located in the src/components/ui directory
+
+## Testing Requirements
+- Every new component must have corresponding unit tests
+- Integration tests required for components that interact with other components
+- Accessibility tests required for interactive components (keyboard navigation, ARIA, screen readers)
+- Test files should be named `ComponentName.test.tsx` and placed in `__tests__` folders
+
+## Workflow Enforcement
+- Do NOT proceed with feature implementation until tests are in place
+- Do NOT skip testing steps in the development process
+- Always run tests after making changes to ensure no regressions
+- If tests fail, fix them before proceeding with new features
+- Always run build and check for errors. Fix errors before proceeding with new features
+
+## Test Coverage
+- Test component rendering and props
+- Test user interactions (clicks, hovers, keyboard events)
+- Test accessibility features (focus management, ARIA attributes)
+- Test integration with external libraries (next-themes, etc.)
+- Test error states and edge cases
+
+# Workflow
+- Before implementing a feature, describe your approach and the steps you will take to implement it. Do not proceed with implementation until you have received approval.
+- Once a feature implementation approach is approved, create a feature branch and begin implementation.
+- Once a feature is implemented, run tests to ensure that the feature works as expected. Do not proceed with implementation until tests pass.
+- Once a feature is implemented, restart all web services and open preview browser for manual testing. Do not proceed with implementation until manual testing is complete.
+- Once a feature is implemented, update the task list to reflect the completion of the feature.
+- Once a feature is implemented, update the documentation to reflect the completion of the feature.
+- Once a feature is implemented, update the project plan to reflect the completion of the feature.
+- Once a feature is implemented, commit the feature to the repository.
+
+# Task List Management
+
+Guidelines for managing task lists in markdown files to track progress on completing a PRD
+
+## Task Implementation
+- **One sub-task at a time:** Do **NOT** start the next sub‑task until you ask the user for permission and they say "yes" or "y"
+- **Completion protocol:**  
+  1. When you finish a **sub‑task**, immediately mark it as completed by changing `[ ]` to `[x]`.  
+  2. If **all** subtasks underneath a parent task are now `[x]`, also mark the **parent task** as completed.  
+- Stop after each sub‑task and wait for the user's go‑ahead.
+
+## Task List Maintenance
+
+1. **Update the task list as you work:**
+   - Mark tasks and subtasks as completed (`[x]`) per the protocol above.
+   - Add new tasks as they emerge.
+
+2. **Maintain the "Relevant Files" section:**
+   - List every file created or modified.
+   - Give each file a one‑line description of its purpose.
+
+## AI Instructions
+
+When working with task lists, the AI must:
+
+1. Regularly update the task list file after finishing any significant work.
+2. Follow the completion protocol:
+   - Mark each finished **sub‑task** `[x]`.
+   - Mark the **parent task** `[x]` once **all** its subtasks are `[x]`.
+3. Add newly discovered tasks.
+4. Keep "Relevant Files" accurate and up to date.
+5. Before starting work, check which sub‑task is next.
+6. After implementing a sub‑task, update the file and then pause for user approval.
+
+# General Agent Rules
+
+## PRD and Task List Generation Compliance
+
+- When generating a Product Requirements Document (PRD), the agent **must** always follow the `create-prd` rule:
+  - Ask clarifying questions before writing the PRD.
+  - Wait for user responses before generating the PRD.
+  - Use the required PRD structure and save it as `prd-[feature-name].md` in `/tasks/`.
+  - Do **not** start PRD implementation or task list generation before this process is complete.
+
+- When generating a task list, the agent **must** always follow the `generate-tasks` rule:
+  - Only generate a task list after a PRD exists.
+  - First, present high-level parent tasks and pause for user confirmation ("Go") before generating sub-tasks.
+  - Use the required task list structure and save as `tasks-[prd-file-name].md` in `/tasks/`.
+
+- If the agent fails to follow these rules, it must acknowledge the mistake and restart the process according to the rules.
+
+- These requirements take precedence over any other workflow or shortcut for PRD and task list generation.
+
+## Example (Valid)
+- The agent receives a feature request, asks clarifying questions, waits for answers, then generates the PRD in the correct format and location.
+- The agent then generates high-level tasks, waits for "Go", then generates sub-tasks and relevant files.
+
+## Example (Invalid)
+- The agent generates a PRD or task list without asking clarifying questions or waiting for user confirmation.
+- The agent skips the required file structure or naming conventions.
+
+---
+
+Always ensure strict compliance with `create-prd` and `generate-tasks` rules for all PRD and task list workflows.
+
+
+4. Keep “Relevant Files” accurate and up to date.
+5. Before starting work, check which sub‑task is next.
+6. After implementing a sub‑task, update the file and then pause for user approval.
+
