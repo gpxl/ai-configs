@@ -1,6 +1,6 @@
 # Claude Code Rules and Index Generator
 
-This directory contains rules files and tools optimized for Claude Code, migrated and adapted from the original Cursor rules.
+This directory contains rules files and tools optimized for Claude Code, migrated and adapted from the original Cursor rules. I'm still in the adoption phase with Claude Code so the efficiency of these rules are still being worked on.
 
 ## Files Overview
 
@@ -42,6 +42,8 @@ Reference the specialized guides when needed:
 - Use `@create-prd.md` when creating PRDs
 - Use `@generate-tasks.md` when generating task lists
 - Use `@process-task-list.md` when executing tasks
+
+> Guides are based on Ryan Carson's [AI Dev Tasks](https://github.com/snarktank/ai-dev-tasks)
 
 ## Usage Examples
 
