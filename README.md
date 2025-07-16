@@ -1,6 +1,6 @@
-# Built To Chill
+# Gerlando's AI Configs
 
-This repo contains AI development rules and tools for both Cursor IDE and Claude Code. These files have significantly improved development outcomes and I hope they help you too!
+This repo contains my config rules for both Cursor IDE and Claude Code. They are messy and very much a work in progress but they've helped me achieve pretty good results while vibe, prompt, context coding or whatever we're calling it today. 
 
 ## Choose Your AI Development Tool
 
@@ -10,7 +10,7 @@ From the ClaudeCode directory:
 2. Run `node code_index_generator.js` to build a compact codebase index
 3. Reference the specialized guides as needed (`@create-prd.md`, `@generate-tasks.md`, etc.)
 
-See `ClaudeCode/README.md` for detailed usage instructions and migration notes.
+See `ClaudeCode/README.md` for detailed usage instructions.
 
 ### For Cursor IDE Users
 From the Cursor directory:
@@ -18,7 +18,7 @@ From the Cursor directory:
 2. Run `node nextjs_index_generator.js` to build your codebase index files
 3. Cursor should immediately start using the rules files to steer development
 
-See `Cursor/README.md` for detailed usage instructions and migration notes.
+See `Cursor/README.md` for detailed usage instructions.
 
 ## Suggested development workflow
 
